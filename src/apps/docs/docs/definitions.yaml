@@ -1,0 +1,27 @@
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+        example: "UNAUTHORIZED"
+      status:
+        type: number
+        example: 403
+      description:
+        type: string
+        example: "Unauthorized"
+      metadata:
+        type: object
+        example: {}
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+        description: First name
