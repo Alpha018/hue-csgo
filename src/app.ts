@@ -6,10 +6,10 @@ import { logger } from '@reignmodule/utils';
 
 import config from './config';
 import { errors } from './utils/errors';
-// Controllers (route handlers)
 import { HealthRoutes } from './apps/health/routes';
-import { UserRoutes } from './apps/core/routes/user-routes';
+import { StatRoutes } from './apps/core/routes/stat-routes';
 import { SwaggerRoutes } from './apps/docs/routes';
+import { HueSingleton } from './apps/core/singleton/hue-singleton';
 
 // Create Express server
 class Server {
@@ -18,6 +18,7 @@ class Server {
   constructor() {
     this.app = express();
 
+    HueSingleton.getInstance();
     this.config();
     this.swaggerSetup();
     this.routes();
@@ -98,7 +99,7 @@ class Server {
      */
     this.app.use(SwaggerRoutes.path, new SwaggerRoutes().router);
     this.app.use(HealthRoutes.path, new HealthRoutes().router);
-    this.app.use(UserRoutes.path, new UserRoutes().router);
+    this.app.use(StatRoutes.path, new StatRoutes().router);
   }
 
 }

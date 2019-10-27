@@ -32,6 +32,11 @@ const errorClasses = {};
     name: 'UNEXPECTED_ERROR',
     description: 'Unexpected error',
   },
+  {
+    status: 570,
+    name: 'BUTTON_NOT_PRESSED',
+    description: 'button of Philips Hue is not pressed',
+  },
 ].forEach((error) => {
   // @ts-ignore
   errorClasses[error.name] = class extends BaseError {

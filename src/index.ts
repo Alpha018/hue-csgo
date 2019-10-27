@@ -1,7 +1,7 @@
-import * as https from 'https';
+import * as http from 'http';
 import config from './config';
 import app from './app';
 import { listeningListener } from './utils/listening-listener';
 
-export const httpsServer = https.createServer(config.httpsOptions, app)
+export const httpsServer = http.createServer(app)
   .listen(config.sslPort, listeningListener);
